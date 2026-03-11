@@ -28,7 +28,7 @@ export function calculateRiskScore(cve) {
     exploitabilityComponent * EXPLOITABILITY_WEIGHT +
     ageComponent * AGE_WEIGHT;
 
-  return Math.min(100, Math.round(score * 100));
+  return Math.max(0, Math.min(100, Math.round(score * 100)));
 }
 
 function getCvssComponent(cve) {
@@ -41,7 +41,7 @@ function getCvssComponent(cve) {
 
   const baseScore = cvss3.cvssData?.baseScore ?? cvss3.cvssData?.baseSeverity;
   if (typeof baseScore === 'number') {
-    return baseScore / 10; // Normalize 0-10 to 0-1
+    return Math.max(0, Math.min(1, baseScore / 10)); // Normalize 0-10 to 0-1, clamp invalid values
   }
   if (baseScore === 'CRITICAL') return 1;
   if (baseScore === 'HIGH') return 0.8;
@@ -58,7 +58,7 @@ function getExploitabilityComponent(cve) {
   if (!cvss3?.exploitabilityScore) return 0.5;
 
   const score = cvss3.exploitabilityScore;
-  return Math.min(1, score / 4); // CVSS exploitability typically 0-4
+  return Math.max(0, Math.min(1, score / 4)); // CVSS exploitability typically 0-4, clamp invalid values
 }
 
 function getAgeComponent(cve) {
@@ -70,7 +70,7 @@ function getAgeComponent(cve) {
   const daysSincePublished = (now - publishedDate) / (1000 * 60 * 60 * 24);
 
   // Older = higher risk (more time for exploitation)
-  // Cap at 365 days for full 20% contribution
-  const normalizedAge = Math.min(1, daysSincePublished / 365);
+  // Cap at 365 days for full 20% contribution; clamp negative (future dates) to 0
+  const normalizedAge = Math.max(0, Math.min(1, daysSincePublished / 365));
   return normalizedAge;
 }

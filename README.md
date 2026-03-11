@@ -56,6 +56,8 @@ Each component is first **normalized to 0–1** so they use the same scale:
 
 The weighted sum `(cvss × 0.6) + (exploitability × 0.2) + (age × 0.2)` therefore stays between 0 and 1. Multiplying by 100 converts this to the final **0–100** risk score.
 
+**Invalid data handling:** Each component and the final score are clamped to valid ranges. CVSS and exploitability are clamped to 0–1; age clamps negative values (e.g. future dates) to 0 and caps at 1 for 365+ days; the final score is clamped to 0–100. This ensures malformed or unexpected NVD data never produces out-of-range scores.
+
 ## Frontend Features
 
 - **Vulnerability Table:** CVE ID, Description, Severity, Risk Score, Date
