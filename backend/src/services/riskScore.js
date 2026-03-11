@@ -52,7 +52,7 @@ function getCvssComponent(cve) {
 
 function getExploitabilityComponent(cve) {
   const metrics = cve.metrics;
-  if (!metrics) return 0.5;
+  if (!metrics) return 0.5; // Default middle if no metrics
 
   const cvss3 = metrics.cvssMetricV31?.[0] || metrics.cvssMetricV30?.[0] || metrics.cvssMetricV2?.[0];
   if (!cvss3?.exploitabilityScore) return 0.5;
@@ -63,7 +63,7 @@ function getExploitabilityComponent(cve) {
 
 function getAgeComponent(cve) {
   const published = cve.published;
-  if (!published) return 0.5;
+  if (!published) return 0.5; // Default middle if no metrics
 
   const publishedDate = new Date(published);
   const now = new Date();

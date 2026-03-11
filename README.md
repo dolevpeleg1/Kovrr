@@ -45,14 +45,16 @@ Frontend runs at `http://localhost:5173` and proxies `/api` to the backend.
 | POST | `/api/sync` | Re-fetch from NVD API |
 
 ## Risk Score Formula (0–100)
+| **CVSS Score** | 60% | Base severity from CVSS v3.1/v3.0/v2
+| **Exploitability** | 20% | NVD exploitability score
+| **Age** | 20% | Days since published (older = higher exposure)
 
-| Component | Weight | Description |
-|-----------|--------|-------------|
-| **CVSS Score** | 60% | Base severity from CVSS v3.1/v3.0/v2 |
-| **Exploitability** | 20% | NVD exploitability score (0–4 normalized) |
-| **Age** | 20% | Days since published (older = higher exposure) |
+Each component is first **normalized to 0–1** so they use the same scale:
+- **CVSS** (0–10) → divided by 10
+- **Exploitability** (0–4) → divided by 4
+- **Age** (0–365 days) → `min(1, days / 365)`
 
-Formula: `score = (CVSS/10 × 0.6) + (exploitability/4 × 0.2) + (min(1, days/365) × 0.2)` → scaled to 0–100.
+The weighted sum `(cvss × 0.6) + (exploitability × 0.2) + (age × 0.2)` therefore stays between 0 and 1. Multiplying by 100 converts this to the final **0–100** risk score.
 
 ## Frontend Features
 
