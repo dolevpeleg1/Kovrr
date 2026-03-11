@@ -1,0 +1,371 @@
+/* App layout */
+.app {
+  min-height: 100vh;
+  background: #0f1419;
+  color: #e6edf3;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.app-header {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 1rem 2rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.app-main {
+  padding: 1.5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-content {
+  min-width: 0;
+}
+
+.filters {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filters label {
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+.filter-select {
+  padding: 0.4rem 0.75rem;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e6edf3;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  border-color: #58a6ff;
+  outline: none;
+}
+
+/* Stats Panel */
+.stats-panel {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.stats-panel h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.stats-panel h3:not(:first-child) {
+  margin-top: 1.5rem;
+}
+
+.stats-severity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.severity-badge {
+  min-width: 70px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.severity-badge--critical {
+  background: rgba(248, 81, 73, 0.2);
+  color: #f85149;
+}
+
+.severity-badge--high {
+  background: rgba(210, 153, 34, 0.2);
+  color: #d29922;
+}
+
+.severity-badge--medium {
+  background: rgba(210, 153, 34, 0.15);
+  color: #d29922;
+}
+
+.severity-badge--low {
+  background: rgba(56, 139, 253, 0.2);
+  color: #58a6ff;
+}
+
+.severity-badge--unknown {
+  background: rgba(139, 148, 158, 0.2);
+  color: #8b949e;
+}
+
+.stats-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: #21262d;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stats-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.stats-bar--critical { background: #f85149; }
+.stats-bar--high { background: #d29922; }
+.stats-bar--medium { background: #d29922; }
+.stats-bar--low { background: #58a6ff; }
+.stats-bar--unknown { background: #8b949e; }
+
+.stats-count {
+  min-width: 2rem;
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+.stats-vendors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stats-vendors li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #21262d;
+  font-size: 0.9rem;
+}
+
+.stats-vendors li:last-child {
+  border-bottom: none;
+}
+
+.vendor-name {
+  color: #e6edf3;
+}
+
+.vendor-count {
+  color: #8b949e;
+}
+
+.stats-panel--loading,
+.stats-panel--error {
+  color: #8b949e;
+}
+
+/* Vulnerability Table */
+.vuln-table-wrapper {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vuln-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vuln-table th,
+.vuln-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #21262d;
+}
+
+.vuln-table th {
+  background: #21262d;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.vuln-table tbody tr:hover {
+  background: rgba(56, 139, 253, 0.05);
+}
+
+.vuln-table .desc {
+  max-width: 400px;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+.cve-id {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cve-id:hover {
+  text-decoration: underline;
+}
+
+.severity {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.severity--critical {
+  background: rgba(248, 81, 73, 0.2);
+  color: #f85149;
+}
+
+.severity--high {
+  background: rgba(210, 153, 34, 0.2);
+  color: #d29922;
+}
+
+.severity--medium {
+  background: rgba(210, 153, 34, 0.15);
+  color: #d29922;
+}
+
+.severity--low {
+  background: rgba(56, 139, 253, 0.2);
+  color: #58a6ff;
+}
+
+.severity--unknown {
+  background: rgba(139, 148, 158, 0.2);
+  color: #8b949e;
+}
+
+.sort-header {
+  background: none;
+  border: none;
+  color: #e6edf3;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.sort-header:hover {
+  color: #58a6ff;
+}
+
+/* Risk Score Indicator - Green (0-30), Yellow (31-60), Orange (61-80), Red (81-100) */
+.risk-indicator {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.risk-indicator--green {
+  background: rgba(46, 160, 67, 0.25);
+  color: #3fb950;
+}
+
+.risk-indicator--yellow {
+  background: rgba(210, 153, 34, 0.25);
+  color: #d29922;
+}
+
+.risk-indicator--orange {
+  background: rgba(210, 130, 34, 0.3);
+  color: #db6d28;
+}
+
+.risk-indicator--red {
+  background: rgba(248, 81, 73, 0.25);
+  color: #f85149;
+}
+
+.vuln-table-loading,
+.vuln-table-error {
+  padding: 2rem;
+  text-align: center;
+  color: #8b949e;
+}
+
+/* Detail page */
+.vulnerability-detail {
+  max-width: 800px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #58a6ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.vulnerability-detail h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.5rem;
+}
+
+.detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-date {
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+.detail-description h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.detail-description p {
+  margin: 0;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+
+.detail-loading,
+.detail-error {
+  padding: 2rem;
+  color: #8b949e;
+}
