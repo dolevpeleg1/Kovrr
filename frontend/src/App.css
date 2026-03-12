@@ -1,26 +1,54 @@
 .app {
   min-height: 100vh;
-  background-image:
-    repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.26),
-      rgba(255, 255, 255, 0.26) 1px,
-      transparent 1px,
-      transparent 26px
-    ),
-    repeating-linear-gradient(
-      225deg,
-      rgba(255, 255, 255, 0.26),
-      rgba(255, 255, 255, 0.26) 1px,
-      transparent 1px,
-      transparent 26px
-    ),
-    linear-gradient(180deg, #5b4bff 0%, #4338ca 220px, #f5f7fb 220px, #ffffff 100%);
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-size: auto 220px, auto 220px, 100% 100%;
-  background-position: 0 0, 0 0, 0 0;
+  position: relative;
+  background-color: #fafbfc;
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 0, 0, 0.06) 0,
+    rgba(0, 0, 0, 0.06) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  background-repeat: repeat;
+  background-size: 20px 20px;
   color: #1f2933;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Dark band: top ~70% */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70vh;
+  z-index: 0;
+  background-color: #0d0822;
+  background-image:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    radial-gradient(
+      ellipse 120% 80% at 0% 100%,
+      rgba(88, 70, 180, 0.35) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      90deg,
+      #2a1f52 0%,
+      #1a1335 35%,
+      #120b28 70%,
+      #0d0822 100%
+    );
+  background-repeat: repeat, no-repeat, no-repeat;
+  background-size: 20px 20px, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
+  pointer-events: none;
 }
 
 .app-header {
@@ -42,6 +70,8 @@
 }
 
 .app-main {
+  position: relative;
+  z-index: 1;
   padding: 2.5rem 3rem 3rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -79,23 +109,29 @@
   padding: 0;
   border-radius: 0;
   background: transparent;
-  color: white;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .filter-select {
   padding: 0.4rem 0.75rem;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  color: #111827;
+  color: #ffffff;
   font-size: 0.9rem;
   cursor: pointer;
 }
 
 .filter-select:hover,
 .filter-select:focus {
-  border-color: #5b4bff;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
   outline: none;
+}
+
+.filter-select option {
+  background: #1a1335;
+  color: #ffffff;
 }
 
 .stats-panel {
@@ -309,7 +345,7 @@
 }
 
 .sort-header:hover {
-  color: #5b4bff;
+  color: white;
 }
 
 /* Risk Score Indicator - Green (0-30), Yellow (31-60), Orange (61-80), Red (81-100) */
