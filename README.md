@@ -98,3 +98,4 @@ npm test
 
 - Cursor/Claude used for scaffolding, API structure, React components, and CSS
 - Manual review and adjustments for risk formula, NVD API structure, and styling
+- Manually added unit tests for risk score edge cases (lower bound, upper bound, mid-range) and invalid/negative value clamping
