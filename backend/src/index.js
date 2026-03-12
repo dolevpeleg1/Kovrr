@@ -2,6 +2,8 @@
  * Kovrr Vulnerability Risk Dashboard - Backend API
  */
 
+console.log('[Kovrr] Backend starting...');
+
 import express from 'express';
 import cors from 'cors';
 import vulnerabilityRoutes from './routes/vulnerabilities.js';
@@ -33,5 +35,5 @@ app.get('/api/health', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`[Kovrr] Backend ready at http://localhost:${PORT}`);
 });
