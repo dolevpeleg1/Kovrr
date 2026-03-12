@@ -7,11 +7,16 @@
 
 .app-header {
   background-image:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(225deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.26),
+      rgba(255, 255, 255, 0.26) 1px,
+      transparent 1px,
+      transparent 26px
+    ),
     linear-gradient(180deg, #5b4bff 0%, #4338ca 100%);
-  background-size: 28px 28px, 28px 28px, 100% 100%;
-  background-position: 0 0, 14px 14px, 0 0;
+  background-size: auto, 100% 100%;
+  background-position: 0 0, 0 0;
   border-bottom: none;
   padding: 1.25rem 3rem;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
