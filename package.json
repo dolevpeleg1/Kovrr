@@ -1,0 +1,10 @@
+{
+  "name": "kovrr-vulnerability-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "install": "npm --prefix backend install && npm --prefix frontend install",
+    "install:all": "npm run install",
+    "dev": "npm --prefix backend run dev & npm --prefix frontend run dev"
+  }
+}

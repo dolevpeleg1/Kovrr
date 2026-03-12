@@ -8,12 +8,24 @@ A full-stack vulnerability risk dashboard that fetches CVE data from the NVD (Na
 - **Frontend:** React 19, TypeScript, Vite, CSS
 - **Data Source:** [NVD REST API 2.0](https://services.nvd.nist.gov/rest/json/cves/2.0)
 
-## Setup
-
 ### Prerequisites
 
 - Node.js 18+
 - npm
+
+## Setup
+
+### Quick Start (recommended)
+
+From the project root:
+
+```bash
+npm install      # installs backend + frontend
+npm run dev      # starts backend and frontend together
+```
+
+- Backend: `http://localhost:3001`
+- Frontend: `http://localhost:5173`
 
 ### Backend
 
@@ -99,3 +111,4 @@ npm test
 - Cursor/Claude used for scaffolding, API structure, React components, and CSS
 - Manual review and adjustments for risk formula, NVD API structure, and styling
 - Manually added unit tests for risk score edge cases (lower bound, upper bound, mid-range) and invalid/negative value clamping
+- Added a root quick-start script (`npm install`, `npm run dev`) to install and run backend + frontend together
