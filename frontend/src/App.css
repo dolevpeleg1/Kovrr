@@ -1,11 +1,5 @@
 .app {
   min-height: 100vh;
-  background: transparent;
-  color: #1f2933;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.app-header {
   background-image:
     repeating-linear-gradient(
       135deg,
@@ -14,12 +8,26 @@
       transparent 1px,
       transparent 26px
     ),
-    linear-gradient(180deg, #5b4bff 0%, #4338ca 100%);
-  background-size: auto, 100% 100%;
-  background-position: 0 0, 0 0;
-  border-bottom: none;
+    repeating-linear-gradient(
+      225deg,
+      rgba(255, 255, 255, 0.26),
+      rgba(255, 255, 255, 0.26) 1px,
+      transparent 1px,
+      transparent 26px
+    ),
+    linear-gradient(180deg, #5b4bff 0%, #4338ca 220px, #f5f7fb 220px, #ffffff 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: auto 220px, auto 220px, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
+  color: #1f2933;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   padding: 1.25rem 3rem;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -30,7 +38,7 @@
   font-size: 1.6rem;
   font-weight: 650;
   letter-spacing: 0.02em;
-  color: #ffffff;
+  color: #101827;
 }
 
 .app-main {
@@ -64,8 +72,14 @@
 }
 
 .filters label {
-  font-size: 0.9rem;
-  color: #6b7280;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: white;
 }
 
 .filter-select {
